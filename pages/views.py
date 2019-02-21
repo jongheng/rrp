@@ -9,8 +9,7 @@ def about(request):
 
 def contact(request):
     return render(request, "contact.html", {})
-
-
+    
 def base(request):
     return render(request, "base.html", {})
 
@@ -24,4 +23,5 @@ def right_sidebar(request):
     return render(request, "right-sidebar.html", {})
 
 def no_sidebar(request):
-    return render(request, "no-sidebar.html", {})    
+    return render(request, "no-sidebar.html", {}) 
+   

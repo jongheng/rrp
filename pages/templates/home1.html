@@ -1,0 +1,284 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+
+{% block title %} Welcome To RRP {% endblock %}
+
+{% block content %}
+
+<html>
+	<head>
+		<title>Intel RRP</title>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="description" content="" />
+		<meta name="keywords" content="" />
+		<!--[if lte IE 8]><script src="css/ie/html5shiv.js"></script><![endif]-->
+		<script src="{% static 'js/jquery.min.js' %}"></script>
+		<script src="{% static 'js/jquery.dropotron.min.js' %}"></script>
+		<script src="{% static 'js/skel.min.js' %}"></script>
+		<script src="{% static 'js/skel-layers.min.js' %}"></script>
+		<script src="{% static 'js/init.js' %}"></script>
+		<noscript>
+			<link rel="stylesheet" href="{% static 'css/skel.css' %}" />
+			<link rel="stylesheet" href="{% static 'css/style.css' %}" />
+			<link rel="stylesheet" href="{% static 'css/style-wide.css' %}" />
+		</noscript>
+		<!--[if lte IE 8]><link rel="stylesheet" href="css/ie/v8.css" /><![endif]-->
+	</head>
+	<body>
+
+		<!-- Wrapper -->
+			{% comment %} <div class="wrapper style1">
+
+				 <!-- Header -->
+					<div id="header" class="skel-panels-fixed">
+						<div id="logo">
+							<h1><a href="index.html">Phase Shift</a></h1>
+							<span class="tag">by TEMPLATED</span>
+						</div>
+						<nav id="nav">
+							<ul>
+								<li class="active"><a href="{% static 'index.html' %}">Homepage</a></li>
+								<li><a href="{% static 'left-sidebar.html' %}">Left Sidebar</a></li>
+								<li><a href="right-sidebar.html">Right Sidebar</a></li>
+								<li><a href="no-sidebar.html">No Sidebar</a></li>
+							</ul>
+						</nav>
+					</div>  {% endcomment %}
+
+				<!-- Banner -->
+					<div id="banner" class="container">
+						<section>
+							<p>This is <strong>Intel RRP Portal</strong> where you can navigate RRP related information</p>
+							{% comment %} <a href="#" class="button medium">Read More</a> {% endcomment %}
+						</section>
+					</div>
+
+				<!-- Sidebar -->
+					<div class="wrapper">
+        <!-- Sidebar  -->
+        
+
+        <!-- Page Content  -->
+        <div id="content">
+
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <div class="container-fluid">
+
+                    <button type="button" id="sidebarCollapse" class="btn btn-info">
+                        <i class="fas fa-align-left"></i>
+                        <span>Toggle Sidebar</span>
+                    </button>
+                    <button class="btn btn-dark d-inline-block d-lg-none ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <i class="fas fa-align-justify"></i>
+                    </button>
+
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="nav navbar-nav ml-auto">
+                            <li class="nav-item active">
+                                <a class="nav-link" href="#">Page</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Page</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Page</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Page</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+
+            <h2>Collapsible Sidebar Using Bootstrap 4</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+            <div class="line"></div>
+
+            <h2>Lorem Ipsum Dolor</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+            <div class="line"></div>
+
+            <h2>Lorem Ipsum Dolor</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+
+            <div class="line"></div>
+
+            <h3>Lorem Ipsum Dolor</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+        </div>
+    </div>
+
+
+				<!-- Extra -->
+					<div id="extra">
+						<div class="container">
+							<div class="row no-collapse-1">
+								<section class="4u"> <a href="#" class="image featured"><img src="{% static 'images/Intel-Portal.png' %}" alt="" height="300" width="300"></a>
+									<div class="box">
+										<p>Intel RRP Portal</p>
+										<a href="https://portal.pxirr.com/" class="button">Go To </a> </div>
+								</section>
+								<section class="4u"> <a href="#" class="image featured"><img src="{% static 'images/Intel-Portal.png' %}" alt="" height="300" width="300"></a>
+									<div class="box">
+										<p>Donec leo, vivamus fermentum nibh in augue praesent a lacus at urna congue rutrum  wisi maecenas ligula.</p>
+										<a href="#" class="button">Read More</a> </div>
+								</section>
+								<section class="4u"> <a href="#" class="image featured"><img src="{% static 'images/Intel-Portal.png' %}" alt="" height="300" width="300"></a>
+									<div class="box">
+										<p>Donec leo, vivamus fermentum nibh in augue praesent a lacus at urna congue rutrum  wisi maecenas ligula.</p>
+										<a href="#" class="button">Read More</a> </div>
+								</section>
+							</div>
+							<div class="row no-collapse-1">
+								<section class="4u"> <a href="#" class="image featured"><img src="{% static 'images/Intel-Portal.png' %}" alt="" height="300" width="300"></a>
+									<div class="box">
+										<p>Donec leo, vivamus fermentum nibh in augue praesent a lacus at urna congue rutrum  wisi maecenas ligula.</p>
+										<a href="#" class="button">Read More</a> </div>
+								</section>
+								<section class="4u"> <a href="#" class="image featured"><img src="{% static 'images/Intel-Portal.png' %}" alt="" height="300" width="300"></a>
+									<div class="box">
+										<p>Donec leo, vivamus fermentum nibh in augue praesent a lacus at urna congue rutrum  wisi maecenas ligula.</p>
+										<a href="#" class="button">Read More</a> </div>
+								</section>
+								<section class="4u"> <a href="#" class="image featured"><img src="{% static 'images/Intel-Portal.png' %}" alt="" height="300" width="300"></a>
+									<div class="box">
+										<p>Donec leo, vivamus fermentum nibh in augue praesent a lacus at urna congue rutrum  wisi maecenas ligula.</p>
+										<a href="#" class="button">Read More</a> </div>
+								</section>
+							</div>
+						</div>
+					</div>
+
+				<!-- Main -->
+					{% comment %} <div id="main">
+						<div class="container">
+							<div class="row"> 
+								
+								<!-- Content -->
+								<div class="6u">
+									<section>
+										<ul class="style">
+											<li class="fa fa-wrench">
+												<h3>Home</h3>
+												<span>In posuere eleifend odio. Quisque semper augue mattis wisi. Maecenas ligula. Pellentesque viverra vulputate enim. Aliquam erat volutpat. Maecenas condimentum enim tincidunt risus accumsan.</span> </li>
+											<li class="fa fa-leaf">
+												<h3>Story</h3>
+												<span>In posuere eleifend odio. Quisque semper augue mattis wisi. Maecenas ligula. Pellentesque viverra vulputate enim. Aliquam erat volutpat. Maecenas condimentum enim tincidunt risus accumsan.</span> </li>
+										</ul>
+									</section>
+								</div>
+								<div class="6u">
+									<section>
+										<ul class="style">
+											<li class="fa fa-cogs">
+												<h3>Link</h3>
+												<span>In posuere eleifend odio. Quisque semper augue mattis wisi. Maecenas ligula. Pellentesque viverra vulputate enim. Aliquam erat volutpat. Maecenas condimentum enim tincidunt risus accumsan.</span> </li>
+											<li class="fa fa-road">
+												<h3>About</h3>
+												<span>In posuere eleifend odio. Quisque semper augue mattis wisi. Maecenas ligula. Pellentesque viverra vulputate enim. Aliquam erat volutpat. Maecenas condimentum enim tincidunt risus accumsan.</span> </li>
+										</ul>
+									</section>
+								</div>
+							</div>
+						</div>
+					</div> {% endcomment %}
+
+	</div>
+
+	<!-- Footer -->
+		{% comment %} <div id="footer" class="wrapper style2">
+			<div class="container">
+				<section>
+					<header class="major">
+						<h2>Mauris vulputate dolor</h2>
+						<span class="byline">Integer sit amet pede vel arcu aliquet pretium</span>
+					</header>
+					<form method="post" action="#">
+						<div class="row half">
+							<div class="12u">
+								<input class="text" type="text" name="name" id="name" placeholder="Name" />
+							</div>
+						</div>
+						<div class="row half">
+							<div class="12u">
+								<input class="text" type="text" name="email" id="email" placeholder="Email" />
+							</div>
+						</div>
+						<div class="row half">
+							<div class="12u">
+								<textarea name="message" id="message" placeholder="Message"></textarea>
+							</div>
+						</div>
+						<div class="row half">
+							<div class="12u">
+								<ul class="actions">
+									<li>
+										<input type="submit" value="Send Message" class="button alt" />
+									</li>
+								</ul>
+							</div>
+						</div>
+					</form>
+				</section>
+			</div>
+		</div> {% endcomment %}
+
+	<!-- Copyright -->
+		{% comment %} <div id="copyright">
+			<div class="container">
+				<div class="copyright">
+					<p>Design: <a href="http://templated.co">Intel</a> Images: <a href="http://unsplash.com">Unsplash</a> (<a href="http://unsplash.com/cc0">CC0</a>)</p>
+					<ul class="icons">
+						<li><a href="#" class="fa fa-facebook"><span>Facebook</span></a></li>
+						<li><a href="#" class="fa fa-twitter"><span>Twitter</span></a></li>
+						<li><a href="#" class="fa fa-google-plus"><span>Google+</span></a></li>
+					</ul>
+				</div>
+			</div>
+		</div> {% endcomment %}
+
+	</body>
+</html>
+
+ {% comment %} <div class="card" style="width: 18rem;">
+  <img src="{% static 'images/banner.png' %}" class="card-img-top" alt="card image cap" height="400" width='400'>
+  <div class="card-body">
+    <h5 class="card-title">Intel RRP Wiki</h5>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <a href="https://soco.intel.com/groups/rrp-jdcom" class="btn btn-primary">Go somewhere</a>
+  </div>
+  <img src="{% static 'images/Intel-Portal.png' %}" class="card-img-top" alt="card image cap" height="400" width='400'>
+  <div class="card-body">
+    <h5 class="card-title">Intel RRP Portal</h5>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <a href="https://portal.pxirr.com/pp/app/home" class="btn btn-primary">Go Intel RRP Portal </a>
+  </div>
+  <img src="{% static 'images/banner.png' %}" class="card-img-top" alt="card image cap" height="400" width='400'>
+  <div class="card-body">
+    <h5 class="card-title">Card title</h5>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <a href="#" class="btn btn-primary">Go somewhere</a>
+  </div>
+  <img src="{% static 'images/banner.png' %}" class="card-img-top" alt="card image cap" height="400" width='400'>
+  <div class="card-body">
+    <h5 class="card-title">Card title</h5>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <a href="#" class="btn btn-primary">Go somewhere</a>
+  </div>
+</div>  {% endcomment %}
+
+{% comment %} <a href="#" class="badge badge-primary">Primary</a>
+<a href="#" class="badge badge-secondary">Secondary</a>
+<a href="#" class="badge badge-success">Success</a>
+<a href="#" class="badge badge-danger">Danger</a>
+<a href="#" class="badge badge-warning">Warning</a>
+<a href="#" class="badge badge-info">Info</a>
+<a href="#" class="badge badge-light">Light</a>
+<a href="#" class="badge badge-dark">Dark</a> {% endcomment %}
+
+{% endblock  %}
+
