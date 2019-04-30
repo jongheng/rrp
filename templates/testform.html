@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+{% block title %}Form{% endblock %}
+{% load static %}
+
+{% block content %}
+<body>
+    {% comment %} <form method="POST" action="/testform/">
+        <fieldset>
+            <legend>Test Information:</legend>
+            {% csrf_token %}
+            {{test_form}}
+            <button type="submit">Create</button> 
+        </fieldset>
+        <button type="submit">Create</button>
+    </form> {% endcomment %}
+     
+    <table border="2">
+        {% comment %} <caption>{{test}}</caption> {% endcomment %}
+        <thead><th>Test ID: {{test.id}}</th></thead>
+        <tbody>
+        {% for test in test_list%}
+        <tr><td>Publish Date: {{test.publish_at}}</td></tr>
+        <tr><td>Media Name: {{test.media_name}}</td></tr>
+        <tr><td>Version Number: {{test.version_number}}</td></tr>
+        <tr><td>Memory: {{test.memory}}</td></tr>
+        <tr><td>Hard Disk Interface: {{test.hard_disk_interface}}</td></tr>
+        <tr><td>CPU Turbo: {{test.cpu_turbo}}</td></tr>
+        <tr><td>OS Version: {{test.os_version}}</td></tr>
+        <tr><td>Video Format: {{test.video_format}}</td></tr>
+        <tr><td>Cores: {{test.cores}}</td></tr>
+        <tr><td>Display Resolution: {{test.display_resolution}}</td></tr>       
+        {% endfor %}
+        </tbody>        
+    </table>
+    <div class="line"></div>
+    {% comment %} <form method="POST" action="/testform/">
+        <fieldset>
+            <legend>Test Information:</legend>
+            {% csrf_token %}
+            {{test_form}}
+            <button type="submit">Create</button>
+        </fieldset>
+    </form> {% endcomment %}
+    <form method="POST" action="/testform/">
+        {% csrf_token %}
+        <table border="2">
+            {{test_form}}
+        </table>
+        <button type='submit'>Create</button>
+    </form>        
+  </body>
+{% endblock %}
