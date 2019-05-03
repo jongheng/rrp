@@ -16,23 +16,96 @@
      
     <table border="2">
         {% comment %} <caption>{{test}}</caption> {% endcomment %}
-        <thead><th>Test ID: {{test.id}}</th></thead>
+        {% comment %} <thead><th>Test ID: {{test.id}}</th></thead> {% endcomment %}
         <tbody>
         {% for test in test_list%}
-        <tr><td>Publish Date: {{test.publish_at}}</td></tr>
-        <tr><td>Media Name: {{test.media_name}}</td></tr>
-        <tr><td>Version Number: {{test.version_number}}</td></tr>
-        <tr><td>Memory: {{test.memory}}</td></tr>
-        <tr><td>Hard Disk Interface: {{test.hard_disk_interface}}</td></tr>
-        <tr><td>CPU Turbo: {{test.cpu_turbo}}</td></tr>
-        <tr><td>OS Version: {{test.os_version}}</td></tr>
-        <tr><td>Video Format: {{test.video_format}}</td></tr>
-        <tr><td>Cores: {{test.cores}}</td></tr>
-        <tr><td>Display Resolution: {{test.display_resolution}}</td></tr>       
+        <tr>
+            <td>Publish Date: </td>
+            <td>{{test.publish_at}}</td>
+        </tr>
+        <tr>
+            <td>Media Name: </td>
+            <td>{{test.media_name}}</td>
+        </tr>
+        {% comment %} <tr>
+            <td>Version Number: </td>
+            <td>{{test.version_number}}</td>
+        </tr> {% endcomment %}
+        <tr>
+            <td>Memory: </td>
+            <td>{{test.memory}}</td>
+        </tr>
+        <tr>
+            <td>Hard Disk Interface: </td>
+            <td>{{test.hard_disk_interface}}</td>
+        </tr>
+        <tr>
+            <td>CPU Turbo: </td>
+            <td>{{test.cpu_turbo}}</td>
+        </tr>
+        <tr>
+            <td>OS Version: </td>
+            <td>{{test.os_version}}</td>
+        </tr>
+        <tr>
+            <td>Video Format: </td>
+            <td>{{test.video_format}}</td>   
+        </tr>
+        <tr>
+            <td>Cores: </td>
+            <td>{{test.cores}}</td>
+        </tr>
+        <tr>
+            <td>Display Resolution: </td>
+            <td>{{test.display_resolution}}</td>      
+        </tr> 
+        <tr>
+            <td>Total Number Of Zones: </td>
+            <td>{{test.total_number_zone}}</td>      
+        </tr> 
+        <tr>
+            <td>Total Number Of Ticker Zones: </td>
+            <td>{{test.total_number_ticker_zone}}</td>      
+        </tr> 
+        <tr>
+            <td>Total Number Of Widget Zones: </td>
+            <td>{{test.total_number_widget_zone}}</td>      
+        </tr> 
+        <tr>
+            <td>Total Number Of Html Zones: </td>
+            <td>{{test.total_number_html_zone}}</td>      
+        </tr> 
+        <tr>
+            <td>Processor Name: </td>
+            <td>{{test.processor_name}}</td>      
+        </tr> 
+        <tr>
+            <td>Processor Speed: </td>
+            <td>{{test.processor_speed}}</td>      
+        </tr> 
+        <tr>
+            <td>Chipset: </td>
+            <td>{{test.chipset}}</td>      
+        </tr> 
+        <tr>
+            <td><br></td>
+        </tr>  
         {% endfor %}
         </tbody>        
     </table>
     <div class="line"></div>
+    
+    {% comment %} {% for test in test_list%}
+        <tr>
+            <td>Chipset: </td>
+            <td>{{test.chipset}}</td>      
+        </tr> 
+         <tr>
+            <td>Processor Speed: </td>
+            <td>{{test.processor_speed}}</td>      
+        </tr> 
+    {% endfor %}       
+    <div class="line"></div> {% endcomment %}
     {% comment %} <form method="POST" action="/testform/">
         <fieldset>
             <legend>Test Information:</legend>
