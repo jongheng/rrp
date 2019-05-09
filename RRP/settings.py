@@ -11,9 +11,16 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 """
 
 import os
+# import sys
+
+# sys.path.insert(0, '../../django-hitcount')
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
+# LOGIN_REDIRECT_URL = 'home'
+# LOGOUT_REDIRECT_URL = 'home'
+
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+print(BASE_DIR)
 
 
 # Quick-start development settings - unsuitable for production
@@ -26,8 +33,23 @@ SECRET_KEY = 'pke7#*km19+(_8@ojb8p^k5d&c6x5#0z5^er@dmfq@!ws748kv'
 DEBUG = True
 
 # ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['127.0.0.1'] 
 
+# Email Backend
+# EMAIL_BACKEND = 'post_office.EmailBackend'
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
+# Email Settings
+EMAIL_USE_TLS = False
+EMAIL_HOST = 'SMTP.intel.com'
+EMAIL_PORT = 25
+EMAIL_HOST_USER = ''
+EMAIL_HOST_PASSWORD = ''
+
+# Post Office
+# POST_OFFICE = {
+#     'LOG_LEVEL' : 1
+# }
 
 # Application definition
 
@@ -39,6 +61,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'pages',
+    'django_filters',
+    # 'post_office',
+    # 'sorl.thumbnail',
+    # 'newsletter',
+    # 'hitcount',
 ]
 
 MIDDLEWARE = [
@@ -56,7 +83,8 @@ ROOT_URLCONF = 'RRP.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [''],
+        # 'DIRS': [os.path.join(BASE_DIR, 'templates')],
+        'DIRS': [],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -64,6 +92,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                # 'pages.contex_processors.email_signup_form',
             ],
         },
     },
@@ -115,6 +144,10 @@ USE_L10N = True
 
 USE_TZ = True
 
+if DEBUG:
+    STATIC_ROOT = os.path.join(BASE_DIR, '/static')
+else:
+    STATIC_ROOT = os.path.join(BASE_DIR, 'static')    
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
@@ -128,4 +161,13 @@ STATIC_URL = '/static/'
 #     os.path.join(BASE_DIR, 'images'),
 
 # ]
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+# STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+STATIC_ROOT = '/home/toh/RRP/static/static_server'
+
+STATICFILES_DIR = ('/home/toh/RRP/static/static_local')
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+
+
