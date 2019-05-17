@@ -1,28 +1,38 @@
 from django.shortcuts import render
+from django.shortcuts import redirect
 from django.contrib import messages
 from django.views.generic import View, CreateView, TemplateView, UpdateView, DeleteView, ListView
-# from django.contrib.auth.forms import UserCreationForm
+# from hitcount.views import HitCountDetailView
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.models import User
 from django.urls import reverse_lazy
 from django.views import generic
-# from django.contrib.auth.decorators import login_required
-# from django.core.mail import send_mail
+
+
 from django.conf import settings
-from django.shortcuts import redirect
+
 from django.template import RequestContext
 from django.core.mail import send_mail
 from django.template.loader import render_to_string
 from django.utils.html import strip_tags
-from django.db.models import Q
+from django.db.models import Q, F
 # from post_office import mail
 # from django.http import HttpResponse, HttpResponseRedirect
 # from templated_mail.mail import BaseEmailMessage
-
-from .models import TestDescription as TestModel
+from .models import TestDescription
+from .models import HitCount
+# from .models import TestDescription as TestModel
+# from .models import HitCountModel
 from .forms import TestDescriptionForm
 from .filters import TestFilter   
 
 html_message = render_to_string('html_mail.html', {'context':'value'})
+subject = 'RBHE-SVE Email'
 plain_message = strip_tags(html_message)
+email_sender = 'giap.jongx.toh@intel.com'
+email_receivers = ['giap.jongx.toh@intel.com','jongtoh23@gmail.com',]
 # from .forms import MailingListForm
 # from .models import MailingList
 # from .emails import send_multiple_email
@@ -138,6 +148,30 @@ class ContactPageView(TemplateView):
 class PortfolioPageView(TemplateView):
     template_name = "portfolio.html" 
 
+class AdminView(TemplateView):
+    login_required = True
+    template_name = "home.html"    
+
+class CountPageView(TemplateView):
+    template_name = "base.html"
+
+    def countindex(self, request):
+
+        try:
+            hit = HitCount.objects.get(pk=1)
+        except:
+            hit = HitCount(count=0)
+            hit.save()
+            pass
+
+        hit = HitCount.objects.filter(pk=1)
+        hit.update(count=F('count') + 1)
+        hit = HitCount.objects.get(pk=1)
+
+        return render(request, self.template_name)    
+
+
+
 # class SignUp(generic.CreateView):
 #     form_class = UserCreationForm
 #     success_url = reverse_lazy('login')
@@ -172,9 +206,14 @@ class PortfolioPageView(TemplateView):
 #               'cores', 'display_resolution'  
 #     ] 
 #     success_url = reverse_lazy('pages:index') 
+
+# class PostCountHitDetailView(HitCountDetailView):
+#     model = HitCountModel
+#     count_hit = True
  
 class TestForm(TemplateView):
     template_name = "testform.html"
+    model = TestDescription
 
     def get(self, request):
         test_list = []
@@ -188,7 +227,7 @@ class TestForm(TemplateView):
         # entry_list = list(TestModel.objects.all())
         # print(entry_list)
         # tests = TestModel.objects.filter()
-        tests = TestModel.objects.last()
+        tests = TestDescription.objects.last()
         # print(tests)
 
         # for test in tests:
@@ -237,14 +276,15 @@ class TestForm(TemplateView):
     def post(self, request):
         test_description = TestDescriptionForm(request.POST)
         if test_description.is_valid():
-            test_description.save()
+            id_save = test_description.save()
+            print(id_save.id)
             # send_mail('RRP','http://goto.intel.com/RBHE_SVE_PG_Val', 'giap.jongx.toh@intel.com', ['giap.jongx.toh@intel.com','jongtoh23@gmail.com',])
-            send_mail('RMHE-SVE Email',plain_message, 'giap.jongx.toh@intel.com', ['giap.jongx.toh@intel.com','jongtoh23@gmail.com',], html_message=html_message)
+            send_mail(subject + " --" + "id: " + str(id_save.id), plain_message, email_sender, email_receivers, html_message=html_message)
             return redirect('/testform/')
          
 class SearchForm(TemplateView):
     template_name = "searchform.html"
-    # model = TestModel
+    model = TestDescription
 
     # def get_context_data(self, **kwargs):
     #     context = super(SearchForm, self).get_context_data(**kwargs)
@@ -271,7 +311,7 @@ class SearchForm(TemplateView):
             if query is not None:
                 # lookups = Q(publish_at___icontains=query) | Q(media_name___icontains=query) | Q(id__icontains=query)
                 # results = TestModel.objects.filter(lookups).distinct()
-                results = TestModel.objects.get(id=query)
+                results = TestDescription.objects.get(id=query)
                 print(results) 
                 context = {'results':results, 'submitbutton':submitbutton}
                 return render(request, self.template_name, context)
@@ -308,7 +348,54 @@ class SearchForm(TemplateView):
 
 class Search(ListView):
     template_name = "search.html"
+    model = TestDescription
 
     def get_queryset(self):
-        return TestModel.objects.all()
-    
+        return TestDescription.objects.all().order_by("-publish_at")
+
+    # def get_queryset(self):
+    #     reult = super().get_queryset()
+    #     query = self.request.GET.get('q')
+
+class SearchView(TemplateView):
+    template_name = "searchform.html"
+    model = TestDescription
+
+    def get(self, request, *args, **kwargs):
+        q = request.GET.get('q', '')
+        # self.results = TestDescription.objects.filter(id__icontains=q)
+        self.results = TestDescription.objects.filter(id__iexact=q)
+        return super().get(request, *args, **kwargs)
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(results=self.results, **kwargs)   
+        return context
+        
+       
+def home(request):
+        count = User.objects.count()
+        return render(request, 'home.html', 
+    {
+        'count': count
+    })
+
+def signup(request):
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('home')
+    else:
+        form = UserCreationForm()
+    return render(request, 'registration/login.html', {
+        'form': form
+    })
+
+@login_required
+def secret_page(request):
+    return render(request, 'home.html')
+
+class SecretPage(LoginRequiredMixin, TemplateView):
+    template_name = 'home.html'
+
+   
